@@ -1,8 +1,7 @@
-
 package model;
 
-
 import java.awt.Color;
+import java.awt.Image;
 
 public class Sel {
 
@@ -10,6 +9,10 @@ public class Sel {
     private int kolom = 0;
     private int lebar = 25;
     private int tinggi = 25;
+    private int posisiX;
+    private int posisiY;
+    private int jarak = 20;
+    private Image image;
 
     private char nilai;
 
@@ -38,6 +41,11 @@ public class Sel {
         this.tinggi = tinggi;
         this.nilai = nilai;
         this.warna = warna;
+    }
+
+    public Sel(int posisiX, int posisiY) {
+        this.posisiX = posisiX;
+        this.posisiY = posisiY;
     }
 
     /**
@@ -110,58 +118,6 @@ public class Sel {
     /**
      * Fungsi untuk geser atas
      */
-    public void geserAtas() {
-        if (isBatasAtas() == false) {
-            baris--;
-        }
-
-    }
-
-    public void serongAtasKanan() {
-        if (isBatasAtas() == false && isBatasKanan() == false) {
-            baris--;
-            kolom++;
-
-        }
-    }
-
-    public void serongAtasKiri() {
-        if (isBatasAtas() == false && isBatasKiri() == false) {
-            baris--;
-            kolom--;
-
-        }
-
-    }
-
-    public void serongBawahKanan() {
-        if (isBatasBawah() == false && isBatasKanan() == false) {
-            baris++;
-            kolom++;
-
-        }
-
-    }
-
-    public void serongBawahKiri() {
-        if (isBatasBawah() == false && isBatasKiri() == false) {
-            baris++;
-            kolom--;
-
-        }
-
-    }
-
-    /**
-     * Fungsi untuk geser bawah
-     */
-    public void geserBawah() {
-        if (isBatasBawah() == false) {
-            baris++;
-        }
-
-    }
-
     /**
      * @return the baris
      */
@@ -244,5 +200,62 @@ public class Sel {
      */
     public void setTinggi(int tinggi) {
         this.tinggi = tinggi;
+    }
+
+    public int getPosisiX() {
+        return posisiX;
+    }
+
+    public void setPosisiX(int posisiX) {
+        this.posisiX = posisiX;
+    }
+
+    public int getPosisiY() {
+        return posisiY;
+    }
+
+    public void setPosisiY(int posisiY) {
+        this.posisiY = posisiY;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public boolean PosisiKiriObjek(Sel Objek) {
+        if (((this.getPosisiX() - jarak) == Objek.getPosisiX()) && (this.getPosisiY() == Objek.getPosisiY())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean PosisiKananObjek(Sel Objek) {
+        if (((this.getPosisiX() + jarak) == Objek.getPosisiX()) && (this.getPosisiY() == Objek.getPosisiY())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean PosisiAtasObjek(Sel Objek) {
+        if (((this.getPosisiY() - jarak) == Objek.getPosisiY()) && (this.getPosisiX() == Objek.getPosisiX())) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean PosisiBawahObjek(Sel Objek) {
+        if (((this.getPosisiY() + jarak) == Objek.getPosisiY()) && (this.getPosisiX() == Objek.getPosisiX())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

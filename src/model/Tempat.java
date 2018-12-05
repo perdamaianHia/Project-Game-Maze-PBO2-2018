@@ -1,16 +1,23 @@
-
 package model;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import view.TempatPanel;
 
-public class Tempat {
+public class Tempat extends TempatPanel {
 
-    private int tinggi; // tinggi tempat Game
-    private int lebar;  // lebar tempat Game
+    private int tinggi = 0; // tinggi tempat Game
+    private int lebar = 0;  // lebar tempat Game
+    private int jarak = 20;
     private ArrayList<Sel> daftarSel; // daftar sel
 
     private String isi; // isi file konfigurasi
+    private File AlamatKonfigurasi;
 
     public static int batasKanan;
 
@@ -27,7 +34,49 @@ public class Tempat {
      * @param file
      */
     public void bacaKonfigurasi(File file) {
+        try {
+            if (file != null) {
 
+                FileInputStream input = new FileInputStream(file);
+                AlamatKonfigurasi = file;
+                int posisiX = 0;
+                int posisiY = 0;
+                Wall wall;
+                Ball b;
+                Gate a;
+                int data;
+                while ((data = input.read()) != -1) {
+                    char item = (char) data;
+                    if (item == '\n') {
+                        posisiY += jarak;
+                        if (this.lebar < posisiX) {
+                            this.lebar = posisiX;
+                        }
+                        posisiX = 0;
+                    } else if (item == '#') {
+                        wall = new Wall(posisiX, posisiY);
+                        arrWall.add(wall);
+                        posisiX += jarak;
+                    } else if (item == 'x') {
+                        b = new Ball(posisiX, posisiY);
+                        arrBall.add(b);
+                        posisiX += jarak;
+                    } else if (item == 'o') {
+                        a = new Gate(posisiX, posisiY);
+                        arrGate.add(a);
+                        posisiX += jarak;
+                    } else if (item == '@') {
+                        maze = new Player(posisiX, posisiY);
+                        posisiX += jarak;
+                    } else if (item == '.') {
+                        posisiX += jarak;
+                    }
+                    tinggi = posisiY;
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Tempat.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
