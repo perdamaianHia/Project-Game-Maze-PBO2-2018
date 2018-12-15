@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Tempat extends JPanel {
-    private ArrayList arrWall = new ArrayList(); 
-//    private ArrayList arrBall = new ArrayList();
+
+    private ArrayList arrWall = new ArrayList();
     private ArrayList arrGate = new ArrayList();
     private ArrayList arrMaps = new ArrayList();
     private Player maze;
@@ -52,10 +52,6 @@ public class Tempat extends JPanel {
                         wall = new Wall(posisiX, posisiY);
                         arrWall.add(wall);
                         posisiX += jarak;
-//                    } else if (item == 'x') {
-//                        b = new Ball(posisiX, posisiY);
-//                        arrBall.add(b);
-//                        posisiX += jarak;
                     } else if (item == 'o') {
                         a = new Gate(posisiX, posisiY);
                         arrGate.add(a);
@@ -84,7 +80,6 @@ public class Tempat extends JPanel {
         g.fillRect(0, 0, this.getLebar(), this.getTinggi());
         arrMaps.addAll(arrWall);
         arrMaps.addAll(arrGate);
-//        arrMaps.addAll(arrBall);
         arrMaps.add(maze);
         for (int i = 0; i < arrMaps.size(); i++) {
             if (arrMaps.get(i) != null) {
@@ -202,138 +197,9 @@ public class Tempat extends JPanel {
         return bantu;
     }
 
-//    private boolean cekBolaNabrakBola(Pixel objek, String input) {
-//        boolean bantu = false;
-//        if (input.equalsIgnoreCase("l")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol = (Ball) arrBall.get(i);
-//                if (objek.PosisiKiriObjek(bol)) {
-//                    bantu = true;
-//                    break;
-//                }
-//            }
-//        } else if (input.equalsIgnoreCase("r")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol = (Ball) arrBall.get(i);
-//                if (objek.PosisiKananObjek(bol)) {
-//                    bantu = true;
-//                    break;
-//                }
-//            }
-//
-//        } else if (input.equalsIgnoreCase("u")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol = (Ball) arrBall.get(i);
-//                if (objek.PosisiAtasObjek(bol)) {
-//                    bantu = true;
-//                    break;
-//                }
-//            }
-//
-//        } else if (input.equalsIgnoreCase("d")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol = (Ball) arrBall.get(i);
-//                if (objek.PosisiBawahObjek(bol)) {
-//                    bantu = true;
-//                    break;
-//                }
-//            }
-//        }
-//        return bantu;
-//    }
-//
-//    private boolean cekBolaPemainTembok(String input) {
-//        boolean bantu = false;
-//        if (input.equalsIgnoreCase("l")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol1 = (Ball) arrBall.get(i);
-//                if (soko.PosisiKiriObjek(bol1)) {
-//                    if (cekBolaNabrakBola(bol1, "l")) {
-//                        bantu = true;
-//                        break;
-//                    } else if (cekObjekNabrakTembok(bol1, "l")) {
-//                        bantu = true;
-//                        break;
-//                    } else {
-//                        bol1.Gerak(-jarak, 0);
-//                        isCompleted();
-//                    }
-//                }
-//            }
-//        } else if (input.equalsIgnoreCase("r")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol1 = (Ball) arrBall.get(i);
-//                if (soko.PosisiKananObjek(bol1)) {
-//                    if (cekBolaNabrakBola(bol1, "r")) {
-//                        bantu = true;
-//                        break;
-//                    } else if (cekObjekNabrakTembok(bol1, "r")) {
-//                        bantu = true;
-//                        break;
-//                    } else {
-//                        bol1.Gerak(jarak, 0);
-//                        isCompleted();
-//                    }
-//                }
-//            }
-//        } else if (input.equalsIgnoreCase("u")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol1 = (Ball) arrBall.get(i);
-//                if (soko.PosisiAtasObjek(bol1)) {
-//                    if (cekBolaNabrakBola(bol1, "u")) {
-//                        bantu = true;
-//                        break;
-//                    } else if (cekObjekNabrakTembok(bol1, "u")) {
-//                        bantu = true;
-//                        break;
-//                    } else {
-//                        bol1.Gerak(0, -jarak);;
-//                        isCompleted();
-//                    }
-//                }
-//            }
-//        } else if (input.equalsIgnoreCase("d")) {
-//            for (int i = 0; i < arrBall.size(); i++) {
-//                Ball bol1 = (Ball) arrBall.get(i);
-//                if (soko.PosisiBawahObjek(bol1)) {
-//                    if (cekBolaNabrakBola(bol1, "d")) {
-//                        bantu = true;
-//                        break;
-//                    } else if (cekObjekNabrakTembok(bol1, "d")) {
-//                        bantu = true;
-//                        break;
-//                    } else {
-//
-//                        bol1.Gerak(0, jarak);;
-//                        isCompleted();
-//                    }
-//                }
-//            }
-//        }
-//        return bantu;
-//    }
-
-//    public void isCompleted() {
-//        int jumBola = arrBall.size();
-//        int goal = 0;
-//        for (int i = 0; i < arrBall.size(); i++) {
-//            Ball bol = (Ball) arrBall.get(i);
-//            for (int j = 0; j < arrGate.size(); j++) {
-//                Gate gaw = (Gate) arrGate.get(j);
-//                if (bol.getPosisiX() == gaw.getPosisiX() && bol.getPosisiY() == gaw.getPosisiY()) {//cek posisi bola sama dengan bola.
-//                    goal += 1;
-//                }
-//            }
-//        }
-//        if (goal == jumBola) {
-//            JOptionPane.showMessageDialog(null, "Selamat anda berhasil menyelesaikan game ini.");
-//        }
-//    }
-
     public void restartLevel() {
         Allperintah.clear();
         arrGate.clear();
-//        arrBall.clear();
         arrWall.clear();
         arrMaps.clear();
         setPeta(Alamatpeta);
