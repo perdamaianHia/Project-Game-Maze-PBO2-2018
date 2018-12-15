@@ -18,7 +18,7 @@ public class Gate extends Pixel {
     public Gate(int x, int y) {
         super(x, y);
 
-        URL loc = this.getClass().getResource("Crate_Blue.png");
+        URL loc = this.getClass().getResource("Gate.png");
         ImageIcon g = new ImageIcon(loc);
         Image image = g.getImage();
         this.setImage(image);

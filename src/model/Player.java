@@ -17,7 +17,7 @@ public class Player extends Pixel{
 
     public Player(int x, int y) {
         super(x, y);
-        URL loc = this.getClass().getResource("Character4.jpg");
+        URL loc = this.getClass().getResource("Player.jpg");
         ImageIcon iia = new ImageIcon(loc);
         Image image = iia.getImage();
         this.setImage(image);
