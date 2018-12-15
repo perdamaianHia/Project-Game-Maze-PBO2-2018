@@ -10,8 +10,9 @@ import javax.swing.JPanel;
  *
  * @author ACER
  */
-public class TempatPanel extends JPanel{
-     private Tempat tempat;
+public class TempatPanel extends JPanel {
+
+    private Tempat tempat;
 
     public TempatPanel() {
     }
@@ -25,7 +26,7 @@ public class TempatPanel extends JPanel{
      *
      * @param g
      */
-     @Override
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.fillRect(0, 0, Tempat.batasKanan, Tempat.batasBawah);
