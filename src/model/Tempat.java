@@ -25,10 +25,10 @@ public class Tempat extends JPanel {
     private ArrayList Allperintah = new ArrayList();
 
     public Tempat(File file) {
-        setPeta(file);
+        bacaPeta(file);
     }
 
-    public void setPeta(File file) {
+    public void bacaPeta(File file) {
 
         try {
             if (file != null) {
@@ -75,7 +75,6 @@ public class Tempat extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         g.setColor(new Color(255, 255, 255));
         g.fillRect(0, 0, this.getLebar(), this.getTinggi());
         arrMaps.addAll(arrWall);
@@ -202,7 +201,7 @@ public class Tempat extends JPanel {
         arrGate.clear();
         arrWall.clear();
         arrMaps.clear();
-        setPeta(Alamatpeta);
+        bacaPeta(Alamatpeta);
         repaint();
     }
 
