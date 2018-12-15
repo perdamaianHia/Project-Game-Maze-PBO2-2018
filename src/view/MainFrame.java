@@ -1,7 +1,7 @@
 
 package view;
 
-import model.Maps;
+import model.Tempat;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import javax.swing.JFileChooser;
  * @author icode9
  */
 public class MainFrame extends javax.swing.JFrame {
-    Maps maps;
+    Tempat maps;
     File file;
     /**
      * Creates new form MainGame
@@ -207,7 +207,7 @@ public class MainFrame extends javax.swing.JFrame {
         int returnVal = jFileChooser1.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION){ 
          file = jFileChooser1.getSelectedFile();
-         maps = new Maps (file);
+         maps = new Tempat (file);
          panelGame.add(maps);
          maps.setSize(maps.getLebar(), maps.getTinggi());
          

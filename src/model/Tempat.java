@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Maps extends JPanel {
+public class Tempat extends JPanel {
     private ArrayList arrWall = new ArrayList(); 
 //    private ArrayList arrBall = new ArrayList();
     private ArrayList arrGate = new ArrayList();
@@ -24,7 +24,7 @@ public class Maps extends JPanel {
     private File Alamatpeta;
     private ArrayList Allperintah = new ArrayList();
 
-    public Maps(File file) {
+    public Tempat(File file) {
         setPeta(file);
     }
 
@@ -72,7 +72,7 @@ public class Maps extends JPanel {
             }
 
         } catch (IOException ex) {
-            Logger.getLogger(Maps.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tempat.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
