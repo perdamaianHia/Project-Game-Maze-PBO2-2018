@@ -88,7 +88,7 @@ public class Maps extends JPanel {
         arrMaps.add(maze);
         for (int i = 0; i < arrMaps.size(); i++) {
             if (arrMaps.get(i) != null) {
-                Pixel item = (Pixel) arrMaps.get(i);
+                Sel item = (Sel) arrMaps.get(i);
                 g.drawImage(item.getImage(), item.getPosisiX(), item.getPosisiY(), this);
             }
         }
@@ -162,7 +162,7 @@ public class Maps extends JPanel {
         }
     }
 
-    private boolean cekObjekNabrakTembok(Pixel pemain, String input) {
+    private boolean cekObjekNabrakTembok(Sel pemain, String input) {
         boolean bantu = false;
         if (input.equalsIgnoreCase("l")) {
             for (int i = 0; i < arrWall.size(); i++) {

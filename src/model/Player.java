@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  *
  * @author icode9
  */
-public class Player extends Pixel{
+public class Player extends Sel{
 
     public Player(int x, int y) {
         super(x, y);

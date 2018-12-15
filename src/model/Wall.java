@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  *
  * @author icode9
  */
-public class Wall extends Pixel{
+public class Wall extends Sel{
         public Wall(int x, int y){
         super(x, y);
         URL loc = this.getClass().getResource("Wall.png");

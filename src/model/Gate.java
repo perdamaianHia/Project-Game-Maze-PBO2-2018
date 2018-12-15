@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  *
  * @author icode9
  */
-public class Gate extends Pixel {
+public class Gate extends Sel {
 
     public Gate(int x, int y) {
         super(x, y);

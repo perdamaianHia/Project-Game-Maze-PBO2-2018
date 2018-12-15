@@ -2,14 +2,14 @@ package model;
 
 import java.awt.Image;
 
-public class Pixel {
+public class Sel {
 
     private int posisiX;
     private int posisiY;
     private Image image;
     private int Jarak = 20;
 
-    public Pixel(int x, int y) {
+    public Sel(int x, int y) {
         this.posisiX = x;
         this.posisiY = y;
     }
@@ -38,7 +38,7 @@ public class Pixel {
         this.image = image;
     }
 
-    public boolean PosisiKiriObjek(Pixel Objek) {
+    public boolean PosisiKiriObjek(Sel Objek) {
         if (((this.getPosisiX() - Jarak) == Objek.getPosisiX()) && (this.getPosisiY() == Objek.getPosisiY())) {
             return true;
         } else {
@@ -46,7 +46,7 @@ public class Pixel {
         }
     }
 
-    public boolean PosisiKananObjek(Pixel Objek) {
+    public boolean PosisiKananObjek(Sel Objek) {
         if (((this.getPosisiX() + Jarak) == Objek.getPosisiX()) && (this.getPosisiY() == Objek.getPosisiY())) {
             return true;
         } else {
@@ -54,7 +54,7 @@ public class Pixel {
         }
     }
 
-    public boolean PosisiAtasObjek(Pixel Objek) {
+    public boolean PosisiAtasObjek(Sel Objek) {
         if (((this.getPosisiY() - Jarak) == Objek.getPosisiY()) && (this.getPosisiX() == Objek.getPosisiX())) {
             return true;
         } else {
@@ -62,7 +62,7 @@ public class Pixel {
         }
     }
 
-    public boolean PosisiBawahObjek(Pixel Objek) {
+    public boolean PosisiBawahObjek(Sel Objek) {
         if (((this.getPosisiY() + Jarak) == Objek.getPosisiY()) && (this.getPosisiX() == Objek.getPosisiX())) {
             return true;
         } else {
