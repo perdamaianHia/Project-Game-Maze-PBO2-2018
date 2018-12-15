@@ -1,6 +1,7 @@
 
 package test;
 
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import model.Tempat;
 
@@ -8,7 +9,7 @@ import model.Tempat;
 
 public class TestTempat {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         JFileChooser jf = new JFileChooser();
         int returnVal = jf.showOpenDialog(null);
         Tempat tempat = new Tempat();

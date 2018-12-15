@@ -1,18 +1,17 @@
 package model;
 
 import java.awt.Color;
-import java.awt.Image;
 
+/**
+ *
+ * @author user only
+ */
 public class Sel {
 
     private int baris = 0;
     private int kolom = 0;
     private int lebar = 25;
     private int tinggi = 25;
-    private int posisiX;
-    private int posisiY;
-    private int jarak = 20;
-    private Image image;
 
     private char nilai;
 
@@ -41,11 +40,6 @@ public class Sel {
         this.tinggi = tinggi;
         this.nilai = nilai;
         this.warna = warna;
-    }
-
-    public Sel(int posisiX, int posisiY) {
-        this.posisiX = posisiX;
-        this.posisiY = posisiY;
     }
 
     /**
@@ -78,18 +72,18 @@ public class Sel {
     /**
      * Fungsi untuk menggeser sel ke kanan
      */
-    public void geserKanan() {
+    public void geserKanan(int x) {
         if (isBatasKanan() == false) {
-            kolom++;
+            this.setKolom(kolom += x);
         }
     }
 
     /**
      * Fungsi untuk menggeser sel ke kanan
      */
-    public void geserKiri() {
+    public void geserKiri(int x) {
         if (isBatasKiri() == false) {
-            kolom--;
+            this.setKolom(kolom -= x);
         }
     }
 
@@ -97,7 +91,8 @@ public class Sel {
      * Fungsi untuk mengecek sel ada di batas atas
      */
     public boolean isBatasAtas() {
-        if (baris * lebar <= 0) {
+
+        if (baris * tinggi <= 0) {
             return true;
         } else {
             return false;
@@ -108,7 +103,7 @@ public class Sel {
      * Fungsi untuk mengecek sel ada di batas bawah
      */
     public boolean isBatasBawah() {
-        if (baris * lebar + lebar < Tempat.batasBawah) {
+        if (baris * tinggi + tinggi < Tempat.batasBawah) {
             return false;
         } else {
             return true;
@@ -118,6 +113,77 @@ public class Sel {
     /**
      * Fungsi untuk geser atas
      */
+    public void geserAtas(int x) {
+        if (isBatasAtas() == false) {
+            this.setBaris(baris -= x);
+        }
+    }
+
+    public void geserKananAtas() {
+        if (isBatasAtas() == false && isBatasKanan() == false) {
+            baris--;
+            kolom++;
+        } else if (isBatasAtas() == false && isBatasKanan() == true) {
+            baris--;
+            kolom--;
+        } else if (isBatasAtas() == true && isBatasKanan() == false) {
+            baris++;
+            kolom++;
+        } else {
+            baris++;
+            kolom--;
+        }
+    }
+
+    /**
+     * Fungsi untuk geser bawah
+     */
+    public void geserBawah(int x) {
+        if (isBatasBawah() == false) {
+            this.setBaris(baris += x);
+        }
+    }
+
+    public void geserKananBawah() {
+        if (isBatasBawah() == false && isBatasKanan() == false) {
+            baris++;
+            kolom++;
+        } else if (isBatasBawah() == false && isBatasKanan() == true) {
+            baris--;
+            kolom--;
+        } else if (isBatasBawah() == true && isBatasKanan() == false) {
+            baris++;
+            kolom++;
+        } else {
+            baris++;
+            kolom--;
+        }
+    }
+
+    public void geserKiriBawah() {
+        if (isBatasBawah() == false && isBatasKiri() == false) {
+            baris++;
+            kolom--;
+        }
+    }
+
+    public void geserKiriAtas() {
+        if (isBatasAtas() == false && isBatasKiri() == false) {
+            baris--;
+            kolom--;
+        } else {
+
+        }
+    }
+
+    public void geserKiri() {
+        if (isBatasKiri() == false) {
+            kolom--;
+        } else {
+            kolom++;
+        }
+    }
+
     /**
      * @return the baris
      */
@@ -202,60 +268,68 @@ public class Sel {
         this.tinggi = tinggi;
     }
 
-    public int getPosisiX() {
-        return posisiX;
-    }
-
-    public void setPosisiX(int posisiX) {
-        this.posisiX = posisiX;
-    }
-
-    public int getPosisiY() {
-        return posisiY;
-    }
-
-    public void setPosisiY(int posisiY) {
-        this.posisiY = posisiY;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    public boolean PosisiKiriObjek(Sel Objek) {
-        if (((this.getPosisiX() - jarak) == Objek.getPosisiX()) && (this.getPosisiY() == Objek.getPosisiY())) {
-            return true;
+    public void serongKananAtas() {
+        if (isBatasAtas() == false && isBatasKanan() == false) {
+            baris--;
+            kolom++;
         } else {
-            return false;
+            baris++;
+            kolom--;
         }
     }
 
-    public boolean PosisiKananObjek(Sel Objek) {
-        if (((this.getPosisiX() + jarak) == Objek.getPosisiX()) && (this.getPosisiY() == Objek.getPosisiY())) {
-            return true;
+    public void serongKiriAtas() {
+        if (isBatasAtas() == false && isBatasKiri() == false) {
+            baris--;
+            kolom--;
         } else {
-            return false;
+            baris++;
+            kolom++;
         }
     }
 
-    public boolean PosisiAtasObjek(Sel Objek) {
-        if (((this.getPosisiY() - jarak) == Objek.getPosisiY()) && (this.getPosisiX() == Objek.getPosisiX())) {
-            return true;
+    public void serongKiriBawah() {
+        if (isBatasBawah() == false && isBatasKiri() == false) {
+            baris++;
+            kolom--;
         } else {
-            return false;
-        }
-
-    }
-
-    public boolean PosisiBawahObjek(Sel Objek) {
-        if (((this.getPosisiY() + jarak) == Objek.getPosisiY()) && (this.getPosisiX() == Objek.getPosisiX())) {
-            return true;
-        } else {
-            return false;
+            baris--;
+            kolom++;
         }
     }
+
+    public void serongKananBawah() {
+        if (isBatasBawah() == false && isBatasKanan() == false) {
+            baris++;
+            kolom++;
+        } else {
+            baris--;
+            kolom--;
+        }
+    }
+
+    public void geserKanan() {
+        if (isBatasKanan() == false) {
+            kolom++;
+        } else {
+            kolom--;
+        }
+    }
+
+    public void geserAtas() {
+        if (isBatasAtas() == false) {
+            baris--;
+        } else {
+            baris++;
+        }
+    }
+
+    public void geserBawah() {
+        if (isBatasBawah() == false) {
+            baris++;
+        } else {
+            baris--;
+        }
+    }
+
 }

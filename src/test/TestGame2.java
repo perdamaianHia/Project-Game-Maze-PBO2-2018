@@ -1,14 +1,14 @@
-
 package test;
 
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import model.Tempat;
-import view.GameFrame;
+import view.gameFrame;
 import view.TempatPanel;
 
 public class TestGame2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         JFileChooser jf = new JFileChooser();
         int returnVal = jf.showOpenDialog(null);
         Tempat tempat = new Tempat();
@@ -29,13 +29,13 @@ public class TestGame2 {
             }
         }
         // Set ukuran tempat
-        Tempat.batasKanan = 500;
-        Tempat.batasBawah = 300;
+        Tempat.batasKanan = 430;
+        Tempat.batasBawah = 350;
         // buat tempatPanel dan tambahkan tempat ke tempatPanel
         TempatPanel tempatPanel = new TempatPanel();
         tempatPanel.setTempat(tempat);
         // buat gameFrame dan tambahkan tempatPanel ke gameFrame
-        GameFrame game = new GameFrame("My Game", tempatPanel);
+        gameFrame game = new gameFrame("My Game", tempatPanel);
     }
 
 }

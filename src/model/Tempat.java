@@ -1,27 +1,31 @@
 package model;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import view.TempatPanel;
 
-public class Tempat extends TempatPanel {
+/**
+ *
+ * @author user only
+ */
+public class Tempat {
 
-    private int tinggi = 0; // tinggi tempat Game
-    private int lebar = 0;  // lebar tempat Game
-    private int jarak = 20;
+    private int tinggi; // tinggi tempat Game
+    private int lebar;  // lebar tempat Game
     private ArrayList<Sel> daftarSel; // daftar sel
 
     private String isi; // isi file konfigurasi
-    private File AlamatKonfigurasi;
 
     public static int batasKanan;
-
     public static int batasBawah;
+    public static int batasKiri;
+    public static int batasAtas;
 
     public Tempat() {
         daftarSel = new ArrayList<Sel>();
@@ -33,47 +37,91 @@ public class Tempat extends TempatPanel {
      *
      * @param file
      */
-    public void bacaKonfigurasi(File file) {
+    public void bacaKonfigurasi(File file) throws IOException {
         try {
-            if (file != null) {
+            FileInputStream fis = new FileInputStream(file);
+            String hasilBaca = "";
+            int dataInt;
+            int baris = 0;
+            int kolom = 0;
 
-                FileInputStream input = new FileInputStream(file);
-                AlamatKonfigurasi = file;
-                int posisiX = 0;
-                int posisiY = 0;
-                Wall wall;
-                Ball b;
-                Gate a;
-                int data;
-                while ((data = input.read()) != -1) {
-                    char item = (char) data;
-                    if (item == '\n') {
-                        posisiY += jarak;
-                        if (this.lebar < posisiX) {
-                            this.lebar = posisiX;
+            while ((dataInt = fis.read()) != -1) {
+                if ((char) dataInt != '\n') {
+                    switch ((char) dataInt) {
+                        case '#': {
+                            hasilBaca = hasilBaca + (char) dataInt;
+                            Sel sel = new Sel();
+                            sel.setTinggi(50);
+                            sel.setLebar(50);
+                            this.setTinggi(50);
+                            this.setLebar(50);
+                            sel.setNilai((char) dataInt);
+                            sel.setWarna(Color.GRAY);
+                            sel.setBaris(baris);
+                            sel.setKolom(kolom);
+                            this.tambahSel(sel);
+                            kolom++;
+                            break;
                         }
-                        posisiX = 0;
-                    } else if (item == '#') {
-                        wall = new Wall(posisiX, posisiY);
-                        arrWall.add(wall);
-                        posisiX += jarak;
-                    } else if (item == 'x') {
-                        b = new Ball(posisiX, posisiY);
-                        arrBall.add(b);
-                        posisiX += jarak;
-                    } else if (item == 'o') {
-                        a = new Gate(posisiX, posisiY);
-                        arrGate.add(a);
-                        posisiX += jarak;
-                    } else if (item == '@') {
-                        maze = new Player(posisiX, posisiY);
-                        posisiX += jarak;
-                    } else if (item == '.') {
-                        posisiX += jarak;
+                        case ' ': {
+                            hasilBaca = hasilBaca + (char) dataInt;
+                            Sel sel = new Sel();
+                            sel.setTinggi(0);
+                            sel.setLebar(0);
+                            this.setTinggi(0);
+                            this.setLebar(0);
+                            sel.setNilai((char) dataInt);
+                            sel.setWarna(Color.WHITE);
+                            sel.setBaris(baris);
+                            sel.setKolom(kolom);
+                            this.tambahSel(sel);
+                            kolom++;
+                            break;
+                        }
+                        case '@': {
+                            hasilBaca = hasilBaca + (char) dataInt;
+                            Sel sel = new Sel();
+                            sel.setTinggi(50);
+                            sel.setLebar(50);
+                            this.setTinggi(50);
+                            this.setLebar(50);
+                            sel.setNilai((char) dataInt);
+                            sel.setWarna(Color.BLUE);
+                            sel.setBaris(baris);
+                            sel.setKolom(kolom);
+                            this.tambahSel(sel);
+                            kolom++;
+                            break;
+                        }
+                        case 'o': {
+                            hasilBaca = hasilBaca + (char) dataInt;
+                            Sel sel = new Sel();
+                            sel.setTinggi(50);
+                            sel.setLebar(50);
+                            this.setTinggi(50);
+                            this.setLebar(50);
+                            sel.setNilai((char) dataInt);
+                            sel.setWarna(Color.RED);
+                            sel.setBaris(baris);
+                            sel.setKolom(kolom);
+                            this.tambahSel(sel);
+                            kolom++;
+                            break;
+                        }
+                        default:
+                            break;
                     }
-                    tinggi = posisiY;
+                } else {
+                    baris++;
+                    kolom = 0;
+                    hasilBaca = hasilBaca + (char) dataInt;
                 }
             }
+
+            this.setIsi(hasilBaca);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tempat.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Tempat.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -152,4 +200,17 @@ public class Tempat extends TempatPanel {
     public void setIsi(String isi) {
         this.isi = isi;
     }
+
+    public void simpanKonfigurasi(File file) {
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(isi.getBytes());
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Tempat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Tempat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

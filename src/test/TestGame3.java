@@ -1,7 +1,7 @@
 package test;
 
 import model.Tempat;
-import view.GameFrame;
+import view.gameFrame;
 import view.TempatPanel;
 
 public class TestGame3 {
@@ -19,7 +19,7 @@ public class TestGame3 {
         TempatPanel tempatPanel = new TempatPanel();
         tempatPanel.setTempat(tempat);
         // buat gameFrame dan tambahkan tempatPanel ke gameFrame
-        GameFrame game = new GameFrame("My Game", tempatPanel);
+        gameFrame game = new gameFrame("My Game", tempatPanel);
     }
 
 }

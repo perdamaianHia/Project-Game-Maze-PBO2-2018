@@ -7,7 +7,7 @@ package test;
 import java.awt.Color;
 import model.Sel;
 import model.Tempat;
-import view.GameFrame;
+import view.gameFrame;
 import view.TempatPanel;
 
 public class TestGame {
@@ -25,6 +25,7 @@ public class TestGame {
         TempatPanel tempatPanel = new TempatPanel();
         tempatPanel.setTempat(tempat);
         // buat gameFrame dan tambahkan tempatPanel ke gameFrame
-        GameFrame game = new GameFrame("My Game", tempatPanel);
+        gameFrame game = new gameFrame("My Game", tempatPanel);
+        game.getTempatPanel();
     }
 }

@@ -1,13 +1,13 @@
 package main;
 
-import view.GameFrame;
+import view.gameFrame;
 
 
 
 public class GameMain {
 
     public static void main(String[] args) {
-        GameFrame game = new GameFrame("My Game");
+        gameFrame game = new gameFrame("My Game");
     }
 
 }
