@@ -223,55 +223,6 @@ public class Tempat extends JPanel {
         repaint();
     }
 
-    public void save() {
-        for (int i = 0; i < Allperintah.size(); i++) {
-            simpan.add(Allperintah.get(i).toString());
-        }
-    }
-
-    public void undo() {
-        int i = undo.size() - 1;
-        if (i == -1) {
-            JOptionPane.showMessageDialog(null, "ditempat semula");
-        } else {
-            String input = undo.get(i);
-            String[] un = input.split(" ");
-            if (un[0].equalsIgnoreCase("d")) {
-                for (int j = 0; j < Integer.parseInt(String.valueOf(un[1])); j++) {
-                    if (!cekObjekNabrakTembok(maze, "u")) {
-                        maze.Gerak(0, -jarak);
-                        repaint();
-                    }
-                }
-                undo.remove(i);
-            } else if (un[0].equalsIgnoreCase("u")) {
-                for (int j = 0; j < Integer.parseInt(String.valueOf(un[1])); j++) {
-                    if (!cekObjekNabrakTembok(maze, "d")) {
-                        maze.Gerak(0, jarak);
-                        repaint();
-                    }
-                }
-                undo.remove(i);
-            } else if (un[0].equalsIgnoreCase("l")) {
-                for (int j = 0; j < Integer.parseInt(String.valueOf(un[1])); j++) {
-                    if (!cekObjekNabrakTembok(maze, "r")) {
-                        maze.Gerak(jarak, 0);
-                        repaint();
-                    }
-                }
-                undo.remove(i);
-            } else if (un[0].equalsIgnoreCase("r")) {
-                for (int j = 0; j < Integer.parseInt(String.valueOf(un[1])); j++) {
-                    if (!cekObjekNabrakTembok(maze, "l")) {
-                        maze.Gerak(-jarak, 0);
-                        repaint();
-                    }
-                }
-                undo.remove(i);
-            }
-        }
-    }
-
     public String getTeksPerintah() {
         String bantu = "";
         for (int i = 0; i < Allperintah.size(); i++) {
