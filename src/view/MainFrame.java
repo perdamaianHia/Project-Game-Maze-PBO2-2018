@@ -39,8 +39,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnRestart = new javax.swing.JButton();
         txtOutput = new javax.swing.JTextField();
-        simpan = new javax.swing.JButton();
-        btnUndo = new javax.swing.JButton();
         txtPerintah = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -91,15 +89,11 @@ public class MainFrame extends javax.swing.JFrame {
         panelCommandLayout.setHorizontalGroup(
             panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCommandLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(simpan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(91, 91, 91)
                 .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUndo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
                         .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -129,10 +123,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRestart)
-                    .addComponent(btnUndo)
-                    .addComponent(simpan))
+                .addComponent(btnRestart)
                 .addContainerGap())
         );
 
@@ -294,7 +285,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu btnHelp;
     private javax.swing.JMenuItem btnOpen;
     private javax.swing.JButton btnRestart;
-    private javax.swing.JButton btnUndo;
     private javax.swing.JMenu game;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
@@ -304,7 +294,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel panelCommand;
     private javax.swing.JPanel panelGame;
-    private javax.swing.JButton simpan;
     private javax.swing.JTextField txtOutput;
     private javax.swing.JTextField txtPerintah;
     // End of variables declaration//GEN-END:variables
