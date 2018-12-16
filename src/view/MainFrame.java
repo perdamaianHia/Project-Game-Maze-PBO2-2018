@@ -1,4 +1,3 @@
-
 package view;
 
 import model.Tempat;
@@ -8,13 +7,17 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author icode9
  */
 public class MainFrame extends javax.swing.JFrame {
+
     Tempat maps;
     File file;
+
     /**
      * Creates new form MainGame
      */
@@ -39,6 +42,8 @@ public class MainFrame extends javax.swing.JFrame {
         btnRestart = new javax.swing.JButton();
         txtPerintah = new javax.swing.JTextField();
         txtOutput = new javax.swing.JTextField();
+        simpan = new javax.swing.JButton();
+        btnRestart1 = new javax.swing.JButton();
         panelGame = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         game = new javax.swing.JMenu();
@@ -77,21 +82,38 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        simpan.setText("Simpan");
+        simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanActionPerformed(evt);
+            }
+        });
+
+        btnRestart1.setText("Undo");
+        btnRestart1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestart1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelCommandLayout = new javax.swing.GroupLayout(panelCommand);
         panelCommand.setLayout(panelCommandLayout);
         panelCommandLayout.setHorizontalGroup(
             panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
-                        .addComponent(btnRestart)
-                        .addGap(85, 85, 85))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(102, 102, 102))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
                         .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelCommandLayout.createSequentialGroup()
+                                .addComponent(simpan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRestart)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRestart1))
                             .addComponent(txtOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPerintah, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29))))
@@ -117,7 +139,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRestart)
+                .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRestart)
+                    .addComponent(simpan)
+                    .addComponent(btnRestart1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -165,7 +190,7 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelCommand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCommand, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panelGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -205,18 +230,18 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         // TODO add your handling code here:
         int returnVal = jFileChooser1.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION){ 
-         file = jFileChooser1.getSelectedFile();
-         maps = new Tempat (file);
-         panelGame.add(maps);
-         maps.setSize(maps.getLebar(), maps.getTinggi());
-         
-         int lebar = panelGame.getWidth();
-         int tinggi = panelGame.getHeight();
-         
-         int x = (lebar - maps.getLebar()) / 2;
-         int y = (tinggi - maps.getTinggi()) / 2;
-         maps.setLocation(x, y);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            file = jFileChooser1.getSelectedFile();
+            maps = new Tempat(file);
+            panelGame.add(maps);
+            maps.setSize(maps.getLebar(), maps.getTinggi());
+
+            int lebar = panelGame.getWidth();
+            int tinggi = panelGame.getHeight();
+
+            int x = (lebar - maps.getLebar()) / 2;
+            int y = (tinggi - maps.getTinggi()) / 2;
+            maps.setLocation(x, y);
         }
     }//GEN-LAST:event_btnOpenActionPerformed
 
@@ -224,6 +249,17 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         maps.PerintahGerak(txtPerintah.getText());
     }//GEN-LAST:event_txtOutputActionPerformed
+
+    private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
+        // TODO add your handling code here:
+        maps.save();
+        JOptionPane.showMessageDialog(null, "Tersimpan!");
+    }//GEN-LAST:event_simpanActionPerformed
+
+    private void btnRestart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestart1ActionPerformed
+        // TODO add your handling code here:
+        maps.undo();  
+    }//GEN-LAST:event_btnRestart1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,6 +304,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu btnHelp;
     private javax.swing.JMenuItem btnOpen;
     private javax.swing.JButton btnRestart;
+    private javax.swing.JButton btnRestart1;
     private javax.swing.JMenu game;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
@@ -276,6 +313,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel panelCommand;
     private javax.swing.JPanel panelGame;
+    private javax.swing.JButton simpan;
     private javax.swing.JTextField txtOutput;
     private javax.swing.JTextField txtPerintah;
     // End of variables declaration//GEN-END:variables
