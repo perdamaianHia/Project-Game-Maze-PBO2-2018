@@ -72,20 +72,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        simpan.setText("Simpan");
-        simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpanActionPerformed(evt);
-            }
-        });
-
-        btnUndo.setText("Undo");
-        btnUndo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUndoActionPerformed(evt);
-            }
-        });
-
         txtPerintah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPerintahActionPerformed(evt);
@@ -259,17 +245,6 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         maps.PerintahGerak(txtPerintah.getText());
     }//GEN-LAST:event_txtOutputActionPerformed
-
-    private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-        // TODO add your handling code here:
-        maps.save();
-        JOptionPane.showMessageDialog(null, "Tersimpan!");
-    }//GEN-LAST:event_simpanActionPerformed
-
-    private void btnUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoActionPerformed
-        // TODO add your handling code here:
-        maps.undo();  
-    }//GEN-LAST:event_btnUndoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
