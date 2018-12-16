@@ -237,10 +237,28 @@ public class MainFrame extends javax.swing.JFrame {
         maps.PerintahGerak(txtPerintah.getText());
     }//GEN-LAST:event_txtOutputActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Masih proses");
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        JOptionPane.showMessageDialog(null, "petunjuk bermain game!\n"
+                + "\n"
+                + "perintah menggunakan tombol pada keyboard. \n"
+                + "\n"
+                + "cara menggerakan pemain\n"
+                + "perintah :\n"
+                + "u = up/naik\n"
+                + "d = down/turun\n"
+                + "r = right/kanan\n"
+                + "l = left/kiri\n"
+                +"\n"
+                +"contoh bergerak = (r 1 maka akan bergerak kekanan satu langkah)"
+                +"disetiap penulisan kata harus di spasi ,"
+                + "antara perintah gerak dengan jumlah langkah "
+                + "\n"
+                + "tekan tombol restart untuk memulai permainan seperti awal"
+                + "\n"
+                + "==========terima kasih============== ");
+                                 
+    }
 
     /**
      * @param args the command line arguments
