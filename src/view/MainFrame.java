@@ -40,7 +40,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnRestart = new javax.swing.JButton();
         txtOutput = new javax.swing.JTextField();
         simpan = new javax.swing.JButton();
-        btnRestart1 = new javax.swing.JButton();
+        btnUndo = new javax.swing.JButton();
         txtPerintah = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -54,8 +54,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelCommand.setBackground(new java.awt.Color(153, 153, 153));
+        panelCommand.setBackground(new java.awt.Color(0, 102, 102));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Output");
 
         btnRestart.setText("Restart");
@@ -78,10 +79,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        btnRestart1.setText("Undo");
-        btnRestart1.addActionListener(new java.awt.event.ActionListener() {
+        btnUndo.setText("Undo");
+        btnUndo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestart1ActionPerformed(evt);
+                btnUndoActionPerformed(evt);
             }
         });
 
@@ -91,9 +92,11 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Perintah");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MAZE");
 
@@ -107,7 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRestart1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUndo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCommandLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,12 +145,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelCommandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRestart)
-                    .addComponent(btnRestart1)
+                    .addComponent(btnUndo)
                     .addComponent(simpan))
                 .addContainerGap())
         );
 
-        panelGame.setBackground(new java.awt.Color(153, 153, 153));
+        panelGame.setBackground(new java.awt.Color(0, 102, 102));
 
         javax.swing.GroupLayout panelGameLayout = new javax.swing.GroupLayout(panelGame);
         panelGame.setLayout(panelGameLayout);
@@ -263,10 +266,10 @@ public class MainFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Tersimpan!");
     }//GEN-LAST:event_simpanActionPerformed
 
-    private void btnRestart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestart1ActionPerformed
+    private void btnUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoActionPerformed
         // TODO add your handling code here:
         maps.undo();  
-    }//GEN-LAST:event_btnRestart1ActionPerformed
+    }//GEN-LAST:event_btnUndoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
@@ -316,7 +319,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu btnHelp;
     private javax.swing.JMenuItem btnOpen;
     private javax.swing.JButton btnRestart;
-    private javax.swing.JButton btnRestart1;
+    private javax.swing.JButton btnUndo;
     private javax.swing.JMenu game;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;

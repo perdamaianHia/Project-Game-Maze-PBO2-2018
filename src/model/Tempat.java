@@ -112,8 +112,8 @@ public class Tempat extends JPanel {
                             maze.Gerak(0, -jarak);
                             repaint();
                         }
-
                     }
+                    isCompleted();
 
                 } else if (in[0].equalsIgnoreCase("d")) {
                     for (int i = 0; i < Integer.parseInt(String.valueOf(in[1])); i++) {
@@ -125,6 +125,7 @@ public class Tempat extends JPanel {
                         }
 
                     }
+                    isCompleted();
                 } else if (in[0].equalsIgnoreCase("r")) {
                     for (int i = 0; i < Integer.parseInt(String.valueOf(in[1])); i++) {
                         if (cekObjekNabrakTembok(maze, "r")) {
@@ -135,6 +136,7 @@ public class Tempat extends JPanel {
                         }
 
                     }
+                    isCompleted();
 
                 } else if (in[0].equalsIgnoreCase("l")) {
                     for (int i = 0; i < Integer.parseInt(String.valueOf(in[1])); i++) {
@@ -146,6 +148,7 @@ public class Tempat extends JPanel {
                         }
 
                     }
+                    isCompleted();
                 } else if (in[0].equalsIgnoreCase("z")) {
 
                 }
@@ -197,21 +200,20 @@ public class Tempat extends JPanel {
         return bantu;
     }
 
-//    public void isCompleted() {
-//        int goal = 0;
-//        for (int i = 0; i < maze.hashCode(); i++) {
-//            Player pemain = (Player) maze;
-//            for (int j = 0; j < arrGate.size(); j++) {
-//                Gate gaw = (Gate) arrGate.get(j);
-//                if (pemain.getPosisiX() == gaw.getPosisiX() && pemain.getPosisiY() == gaw.getPosisiY()) {//cek posisi bola sama dengan bola.
-//                    goal += 1;
-//                }
-//            }
-//        }
-//        if (goal == maze.hashCode()) {
-//            JOptionPane.showMessageDialog(null, "Selamat anda berhasil menyelesaikan game ini.");
-//        }
-//    }
+    public void isCompleted() {
+        int goal = 0;
+        Player pemain = (Player) maze;
+        for (int j = 0; j < arrGate.size(); j++) {
+            Gate gaw = (Gate) arrGate.get(j);
+            if (pemain.getPosisiX() == gaw.getPosisiX() && pemain.getPosisiY() == gaw.getPosisiY()) {//cek posisi bola sama dengan bola.
+                goal += 1;
+            }
+        }
+        if (goal == arrGate.size()) {
+            JOptionPane.showMessageDialog(null, "Selamat anda berhasil menyelesaikan game ini.");
+        }
+    }
+
     public void restartLevel() {
         Allperintah.clear();
         arrGate.clear();
